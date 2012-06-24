@@ -19,23 +19,44 @@ body div.container{
 .bgwidth { width: 100%; }
 .bgheight { height: 100%; }
 
-/* Text */
-div#text{
+/* Content */
+div#content {
     left:25px;
     position:absolute;
     top:100px;
     z-index: 2;
 }
 div#text div{ display:none; }
-div#text span.title{
+h1 { margin: 1px; }
+h2 { margin: 1px; }
+h1 span.name{
+    background-color:rgba(0, 0, 0, 0.75);
+    color:#FFF;
+    font:bold italic 24px/41px Georgia,serif;
+    padding:6px 12px;
+    text-shadow:0px -1px 1px #000000;
+    width: auto;
+}
+h2 span.title{
     background-color:rgba(0, 0, 0, 0.75);
     color:#FFF;
     font:italic 24px/41px Georgia,serif;
     padding:6px 12px;
     text-shadow:0px -1px 1px #000000;
-    margin: 1px;
+    width: auto;
 }
-div#text span.subtitle {
+h2 span.title a {
+    color:#FFF;
+    text-decoration: none;
+}
+ul {
+    margin: 20px 0 0 1px;
+    padding:0;
+}
+ul li {
+    list-style: none;
+}
+li span.subtitle {
     background-color:rgba(0, 0, 0, 0.75);
     color:#CCC;
     display:inline-block;
@@ -44,15 +65,11 @@ div#text span.subtitle {
     padding:0px 12px;
     width:72px;
 }
-div#text span.title a {
-    color:#FFF;
-    text-decoration: none;
-}
-div#text span.subtitle a {
+li span.subtitle a {
     color:#CCC;
     text-decoration: none;
 }
-div#text span.subtitle a:hover {
+li span.subtitle a:hover {
     color: #FFF;
     text-shadow:0px -1px 1px #000000;
 }
