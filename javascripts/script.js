@@ -1,8 +1,8 @@
 $(window).load(function() {    
 
-	var $window        = $(window),
-	    $bg              = $("#bg"),
-	    aspectRatio      = $bg.width() / $bg.height();
+	var $window     = $(window),
+	    $bg         = $("#bg"),
+	    aspectRatio = $bg.width() / $bg.height();
 	    			    		
 	function resizeBg() {
 		
@@ -23,5 +23,4 @@ $(window).load(function() {
 	}).trigger("resize");
 
 });
-
 
