@@ -44,6 +44,10 @@ div#text span.subtitle {
     padding:0px 12px;
     width:72px;
 }
+div#text span.title a {
+    color:#FFF;
+    text-decoration: none;
+}
 div#text span.subtitle a {
     color:#CCC;
     text-decoration: none;
