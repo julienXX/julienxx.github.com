@@ -29,7 +29,7 @@ div#content {
 div#text div{ display:none; }
 h1 { margin: 1px; }
 h2 { margin: 1px; }
-h1 span.name{
+h1 span{
     background-color:rgba(0, 0, 0, 0.75);
     color:#FFF;
     font:bold italic 24px/41px Georgia,serif;
@@ -37,7 +37,7 @@ h1 span.name{
     text-shadow:0px -1px 1px #000000;
     width: auto;
 }
-h2 span.title{
+h2 span{
     background-color:rgba(0, 0, 0, 0.75);
     color:#FFF;
     font:italic 24px/41px Georgia,serif;
@@ -45,7 +45,7 @@ h2 span.title{
     text-shadow:0px -1px 1px #000000;
     width: auto;
 }
-h2 span.title a {
+h2 span a {
     color:#FFF;
     text-decoration: none;
 }
