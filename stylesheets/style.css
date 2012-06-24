@@ -56,20 +56,20 @@ ul {
 ul li {
     list-style: none;
 }
-li span.subtitle {
+li {
     background-color:rgba(0, 0, 0, 0.75);
     color:#CCC;
-    display:inline-block;
+    display:block;
     font:italic 16px/31px Georgia,serif;
     margin:0;
     padding:0px 12px;
     width:72px;
 }
-li span.subtitle a {
+li a {
     color:#CCC;
     text-decoration: none;
 }
-li span.subtitle a:hover {
+li a:hover {
     color: #FFF;
     text-shadow:0px -1px 1px #000000;
 }
