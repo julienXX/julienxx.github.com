@@ -1,5 +1,12 @@
+/* Body */
+body{
+    background:#000;
+    font-smooth: always;
+    -webkit-font-smoothing:antialiased;
+}
+
 /* Full BG */
-#bg {
+#container {
     width:100%;
     height:100%;
     position:fixed;
@@ -14,20 +21,6 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bg.jpg', sizingMethod='scale')";
 }
 
-/* Body */
-body{
-    background:#000;
-    font-smooth: always;
-    -webkit-font-smoothing:antialiased;
-}
-
-/* Background */
-/*#bg {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-}*/
 .bgwidth { width: 100%; }
 .bgheight { height: 100%; }
 
