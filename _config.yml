@@ -1,6 +1,6 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: Julien Blanchard
+description: I like programming languages
+meta_description: "Julien Blanchard, I like programming languages"
 
 aboutPage: true
 
@@ -9,14 +9,14 @@ highlighter: pygments
 
 paginate: 20
 baseurl: /
-domain_name: 'http://yourblog-domain.com'
-google_analytics: 'UA-XXXXXXXX-X'
-disqus_shortname: 'your-disqus-shortname'
+domain_name: 'http://julienblanchard.com'
+google_analytics: 'UA-9345972-3'
+disqus_shortname: 'julienXX'
 
 # Details for the RSS feed generator
-url:            'http://your-blog-url.example.com'
-author:         'Your Name'
-authorTwitter:  'YourTwitterUsername'
+url:            'http://julienblanchard.com'
+author:         'Julien Blanchard'
+authorTwitter:  'julienXX'
 
 permalink:       /:year/:title/
 
