@@ -1,3 +1,3 @@
 # My personal page
 
-Made with Jekyll and using [Kactus](https://github.com/koenbok/Cactus) theme.
+Made with [Jekyll](https://github.com/jekyll/jekyll) and using the [Kactus](https://github.com/nickbalestra/kactus) theme.
