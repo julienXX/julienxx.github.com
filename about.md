@@ -4,6 +4,8 @@ permalink: about/
 profile: true
 ---
 
-This is a static page. It could be an 'about page' if you'd like.
+Hi I'm a developer from Paris. I currently work with an amazing team at [Sush.io.](http://sush.io)
+
+You can also find me on [GitHub](https://github.com/julienXX) or [Twitter](https://twitter.com/julienXX).
 
 {% include footer.html %}
