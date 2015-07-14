@@ -4,9 +4,9 @@ date:   2015-07-13 17:18:00
 description: "and made my code safer"
 ---
 
-Toying with many languages allowed me to discover new approaches and techniques. For example, Haskell taught me about [Types](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) and Erlang/Elixir enlightened me on [Pattern-matching](http://learnyousomeerlang.com/syntax-in-functions).
+Toying with many languages made me discover new approaches and techniques. For example, Haskell taught me about [Types](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) and Erlang/Elixir enlightened me on [Pattern-matching](http://learnyousomeerlang.com/syntax-in-functions).
 
-Professionally I mainly code with Ruby and I dreamed of having a system of advanced types and some pattern-matching. I discovered this brilliant gem [Contracts.ruby](https://github.com/egonSchiele/contracts.ruby) by [Aditya Bhargava](http://adit.io) and in this article I will try to present [Design by Contracts](https : //en.wikipedia.org/wiki/Design_by_contract) through the use of this gem.
+Professionally I mainly code with Ruby and I dreamed of having an advanced type system and some pattern-matching. I discovered this brilliant gem [Contracts.ruby](https://github.com/egonSchiele/contracts.ruby) by [Aditya Bhargava](http://adit.io) and in this article I will try to present [Design by Contracts](https : //en.wikipedia.org/wiki/Design_by_contract) through the use of this gem.
 
 ## What is a contract?
 
@@ -49,6 +49,7 @@ ParamContractError: Contract violation for argument 2 of 2:
         Value guarded in: Foo::add
         With Contract: Num, Num => Num
 ```
+
 The error highlights that the contract of the method *add* wasn't respected because the second parameter we sent, '2', isn't of the type *Num*.
 
 Note that you must always specify the type of the value returned even if the method does not return anything:
@@ -60,7 +61,7 @@ def hello(name)
 end
 ```
 
-For example, if our method returns many values, its signature will be
+If our method returns many values, its signature will be
 
 ```ruby
 Contract Num => [Num, Num]
@@ -123,7 +124,7 @@ Our *authenticate* method is thus more clear as to what it expects and what it d
 
 ## Pattern-matching
 
-Pattern-matching will, for a given value, test if it matches a pattern or not. If this is the case an action is triggered. It's a bit like Java method overloading. One could imagine it as a giant switch box but much more elegant.
+Pattern-matching will, for a given value, test if it matches a pattern or not. If this is the case an action is triggered. It's a bit like Java method overloading. One could imagine it as a giant switch case but much more elegant.
 
 A simple example with calculation (not effective at all) of the Fibonacci sequence:
 
@@ -166,6 +167,6 @@ If the HTTP response code is 200 it will transform the answer, otherwise we will
 
 There are many benefits. Contracts allow us to have greater consistency in our inputs and outputs. The flow of data in our system is clearer. And all the logical errors of our system can be detected and fixed quickly. Additionally it's easier to understand what a method does, needs and returns. It also provides some kind of documentation that would always be up to date :p.
 
-I think we can thus save a lot of unit tests on the type of the argument(s) received by a method and focus on what it produces with this contract system. Also refactoring becomes a lot easier.
+I think we can thus save a lot of unit tests on the type of the argument(s) received by a method and focus on what it produces with this contract system. Refactoring also becomes a lot easier with this kind of safety.
 
 I hope this article has convinced you of the value of contracts and pattern-matching in your daily Ruby and also gave you the urge to explore other languages ​​with other paradigms.
