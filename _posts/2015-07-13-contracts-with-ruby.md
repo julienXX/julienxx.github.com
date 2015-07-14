@@ -165,7 +165,7 @@ If the HTTP response code is 200 it will transform the answer, otherwise we will
 
 ## Conclusion
 
-There are many benefits. Contracts allow us to have greater consistency in our inputs and outputs. The flow of data in our system is clearer. And all the logical errors of our system can be detected and fixed quickly. Additionally it's easier to understand what a method does, needs and returns. It also provides some kind of documentation that would always be up to date :p.
+There are many benefits. Contracts allow us to have greater consistency in our inputs and outputs. The flow of data in our system is clearer. And most the type errors of our system can be detected and fixed quickly. Additionally it's easier to understand what a method does, needs and returns. It also provides some kind of documentation that would always be up to date :p.
 
 I think we can thus save a lot of unit tests on the type of the argument(s) received by a method and focus on what it produces with this contract system. Refactoring also becomes a lot easier with this kind of safety.
 
