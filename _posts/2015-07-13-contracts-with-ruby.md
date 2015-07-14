@@ -81,7 +81,7 @@ And many others that you will discover in the documentation.
 
 ## Advanced Types Contracts
 
-We can use contracts with advanced Types like lists:
+We can use contracts with advanced types like lists:
 
 ```ruby
 Contract ArrayOf[Num] => Num
@@ -90,7 +90,7 @@ def multiply(vals)
 end
 ```
 
-The contract of *multiply* method indicates that it wants a list of values of the Type Num. Therefore *multiply([2, 4, 16])* is valid but *multiply([2, 4, 'foo'])* is not.
+The contract of *multiply* method indicates that it wants a list of values of the type Num. Therefore *multiply([2, 4, 16])* is valid but *multiply([2, 4, 'foo'])* is not.
 
 Hashes:
 
