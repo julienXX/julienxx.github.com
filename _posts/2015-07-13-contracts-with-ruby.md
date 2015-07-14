@@ -4,7 +4,7 @@ date:   2015-07-13 17:18:00
 description: "and made my code safer"
 ---
 
-Toying with many languages allowed me to discover new approaches and techniques. For example, Haskell thaught me about [Types](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) and Erlang/Elixir enlightened me on [Pattern-matching](http://learnyousomeerlang.com/syntax-in-functions).
+Toying with many languages allowed me to discover new approaches and techniques. For example, Haskell taught me about [Types](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) and Erlang/Elixir enlightened me on [Pattern-matching](http://learnyousomeerlang.com/syntax-in-functions).
 
 Professionally I mainly code with Ruby and I dreamed of having a system of advanced types and some pattern-matching. I discovered this brilliant gem [Contracts.ruby](https://github.com/egonSchiele/contracts.ruby) by [Aditya Bhargava](http://adit.io) and in this article I will try to present [Design by Contracts](https : //en.wikipedia.org/wiki/Design_by_contract) through the use of this gem.
 
@@ -12,7 +12,7 @@ Professionally I mainly code with Ruby and I dreamed of having a system of advan
 
 A contract ensures what kind of input a method expects (pre-condition), what it outputs (post-condition). It will define how our method behaves but also check its behavior.
 
-The gem `Contracts.ruby` allows us to decorate our methods with code that will check that the inputs and outputs correspond to what the contract specifies. Of course, one is not obliged to annotate each methods but I think that specifying a contract for your public API can only be beneficial.
+The gem `Contracts.ruby` allows us to decorate our methods with code that will check that the inputs and outputs correspond to what the contract specifies. Of course, one is not obliged to annotate each method but I think that specifying a contract for your public API can only be beneficial.
 
 ## A first example
 
@@ -68,7 +68,7 @@ Contract Num => [Num, Num]
 
 ## Types at our disposal
 
-Beside the classics **Num**, **String**, **Bool**, we can use more interesting types like:
+Besides the classics **Num**, **String**, **Bool**, we can use more interesting types like:
 
 - **Any** when we have no type constraint
 - **None** when you need no argument
@@ -89,7 +89,7 @@ def multiply(vals)
 end
 ```
 
-The contract of *multiply* method indiquates that it wants a list of values of the Type Num. Therefore *multiply([2, 4, 16])* is valid but *multiply([2, 4, 'foo'])* is not.
+The contract of *multiply* method indicates that it wants a list of values of the Type Num. Therefore *multiply([2, 4, 16])* is valid but *multiply([2, 4, 'foo'])* is not.
 
 Hashes:
 
@@ -146,7 +146,7 @@ end
 
 For a given argument, each method will be tried in order. The first method that does not generate an error will be used.
 
-An little more real-world™ example, the management of an HTTP response based on its status code:
+A little more real-world™ example, the management of an HTTP response based on its status code:
 
 ```ruby
 Contract 200, JsonString => JsonString
