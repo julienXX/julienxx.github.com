@@ -1,6 +1,6 @@
 ---
 title:  "Using Resque with Rust"
-date:   2015-10-26 14:40:00
+date:   2015-10-28 14:40:00
 description: "Enqueing and performing Resque jobs with the Rust programming language."
 ---
 
@@ -8,14 +8,14 @@ description: "Enqueing and performing Resque jobs with the Rust programming lang
 
 The full code for the following examples can be found [here](https://github.com/julienXX/rust-resque-example).
 
-[Resque](https://github.com/blog/542-introducing-resque) is a popular solution in the Ruby world to process background jobs. It uses Redis as a backend to store jobs in queues.
+[Resque](https://github.com/blog/542-introducing-resque) is a popular solution in the Ruby world to process background jobs. The great thing with it is the fact it uses Redis as a backend, making it easy to share jobs with workers written in other languages.
 
-What I really like about Resque is that I can process jobs in other languages than Ruby if needed. Let's see how we can write a Resque worker with the Rust programming language.
+In this article we'll see how we can write a fully functionnal Resque worker in Rust. This will allow us to either use Resque entirely with Rust, enqueue a job in Ruby and perform it with Rust or vice versa.
 
-## How Resque works?
+## How does Resque works?
 
 Resque jobs are enqueued in a Redis list using the `RPUSH` command.
-A Resque job is represented internally with a JSON string containing two keys, one for the job class name and one for its arguments.
+A Resque job is represented internally with a JSON string containing two keys, one for the job class name and one for its arguments (or payload in Resque terms).
 
 ```json
 {
@@ -24,27 +24,19 @@ A Resque job is represented internally with a JSON string containing two keys, o
 }
 ```
 
-Queues are just a Redis SET whose entries looks like `resque:queue_name`.
+Available queues are defined in a `resque:queues` `Redis SET` whose entries are the queue name like `some_queue_name`.
+
+Enqueueing a job is done by issueing a `RPUSH` command with a payload to some queue. 
 
 Knowing that let's enqueue our first job from Rust.
 
 ## Enqueing a Resque job
 
-Let's pretend we need to enqueue a Resque job to send an email upon registering our awesome service. Our perform method on the Ruby side look like:
+Let's pretend we need to enqueue a Resque job in order to send a confirmation email.
 
-```ruby
-class SignupEmail
-  @queue = :rust_test_queue
+First we need to start a new project with:
 
-  def self.perform(email)
-    ...
-  end
-end 
 ```
-
-Let's start a new project with:
-
-```shell
 λ cargo new rust-worker --bin
 ```
 
@@ -91,12 +83,12 @@ fn enqueue(job: Job) -> redis::RedisResult<Job> {
     // Encode our Job in JSON
     let json_job = json::encode(&job).unwrap();
 
-    // Add our queue in the resque:queues Redis set
-    // let _: () throws away the result, just making sure it does not fail
-    let _: () = try!(conn.sadd("resque:queues", "rust_test_queue"));
+    // Add our queue in resque:queues Set
+    try!(conn.sadd("resque:queues", "rust_test_queue"));
+    // Push our job in the resque:queue:rust_test_queue list
+    try!(conn.rpush("resque:queue:rust_test_queue", json_job));
 
-    // Push our job in the resque:queue:rust_test_queue Redis list
-    let _: () = try!(conn.rpush("resque:queue:rust_test_queue", json_job));
+    println!("Enqueued job: {:?}", job);
 
     Ok(job)
 }
@@ -113,14 +105,14 @@ fn main() {
     // Enqueue our job
     match enqueue(job) {
         Ok(job) => println!("Enqueued job: {:?}", job),
-        Err(_) => { /* enqueue can't fail right now but you could handle failure here */ }
+        Err(_) => { /* handle failure here */ }
     }
 }
 ```
 
-![Resque screenshot](https://photos-4.dropbox.com/t/2/AAARR-dh3ArkvMUHf3aVTpX7fSkuvQcF217ailcZ2oPBjg/12/536328/png/32x32/1/1445886000/0/2/Screenshot%202015-10-26%2018.51.07.png/CIjeICABIAIgAyAFIAcoAg/RZH07sQij-UY1efKeVMh9R2wkI4DwboutFj_B2q808o?size_mode=5)
+![Resque screenshot](http://i.imgbox.com/GmeAjSnN.png)
 
-Great we successfully enqueued a job that can be performed through Resque.
+Great! We successfully enqueued a job that can be performed through Resque.
 
 Now onto the perform part.
 
@@ -130,7 +122,7 @@ A Resque worker will try to `reserve` a job by polling a queue with the `LPOP` c
 
 Let's implement that.
 
-We need a reserve function that will check if a job is present in a queue or wait a few seconds:
+We need a reserve function that will check if a job is present in a queue:
 
 ```rust
 fn reserve() -> redis::RedisResult<()> {
@@ -140,36 +132,37 @@ fn reserve() -> redis::RedisResult<()> {
     let client = try!(redis::Client::open("redis://127.0.0.1/"));
     let conn = try!(client.get_connection());
 
-    // Removes and returns the first element of the list
+    // Check if a job is present in the queue
     let res = conn.lpop("resque:queue:rust_test_queue").unwrap();
 
-    // Perform the job or wait
+    // Perform the job or return
     match res {
         Some(job) => perform(job),
-        None => Ok(wait_a_bit()),
+        None => return Ok(()),
     }
 }
 ```
 
-We also make a function that waits 5 seconds and then tries to reserve again:
+We also need to have a function that waits a few seconds to mimic Resque behaviour:
 
 ```rust
 fn wait_a_bit() {
     println!("--: Sleeping for 5.0 seconds");
     std::thread::sleep_ms(5000);
-
-    let _ = reserve();
 }
 ```
 
-In order to perform a job, we need to decode the JSON String retrieved from the Resque queue.
+In order to perform our job, we need to decode the JSON String retrieved from the Resque queue and then do something useful like sending an email in our case.
 
 ```rust
 fn perform(json_job: String) -> redis::RedisResult<()> {
+    // Decode JSON
     let job: Job = json::decode(&*json_job).unwrap();
-    println!("Found job: {:?}", job);
+    println!("Found job: {:?}", job.args.first());
 
-    // Do something with our job.
+    // Send our email with something like:
+    // send_email(job.args.first());
+    // not implemented here.
 
     Ok(())
 }
@@ -177,25 +170,25 @@ fn perform(json_job: String) -> redis::RedisResult<()> {
 
 Our Job struct must derive the `RustcDecodable` trait to be decodable. I'm decoding `&*json_job` since `json::decode` expects a `&str` and not a `String`.
 
-Now let's update our `main()` function to make a complete flow through Resque.
+Now let's update our `main()` function to enqueue a job, perform it and wait for other jobs to come.
 
 ```rust
 fn main() {
     let job: Job = Job { class: "SignupEmail".to_owned(),
                          args: vec!["user@example.com".to_owned()] };
 
-    // I use 'let _ =' because we don't use the return value
-    let _ = enqueue(job);
+    enqueue(job).unwrap();
 
     loop {
-        let _ = reserve();
+        reserve().unwrap();
+        wait_a_bit();
     }
 }
 ```
 
 Time to try our worker.
 
-```shell
+```console
 λ cargo build
    Compiling rust-resque-example v0.1.0 (file:///Users/julien/Code/rust-resque-example)
 
@@ -214,4 +207,4 @@ And it works! We successfully enqueued and performed a job in Resque from Rust.
 
 ## What's missing?
 
-Our very basic implementation still needs to be Resque web compatible and to handle failed jobs the Resque way. It also needs to be deployed alongside our Ruby workers but that's for another article :)
+Our implementation still needs to be Resque web compatible (show workers...) and to handle failed jobs the Resque way. It also needs to be deployed alongside our Ruby workers but that's for another article :)

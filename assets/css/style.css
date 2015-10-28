@@ -291,18 +291,28 @@ hr {
 	background: #eee;
 }
 
-span.code { font-family:Menlo, Monaco, Courier; background-color:#EEE; font-size:14px; }
-
 pre	{
 	font-family:Menlo, Monaco, Courier;
 	white-space:pre-wrap;
-	/*border: 1px solid #ddd;*/
+	border: 1px solid #ddd;
 	padding:20px;
-	/*font-size:14px;*/
+	font-size:14px;
 	overflow:auto;
 	border-radius: 3px;
 	  font-family: 'Source Code Pro',Menlo,monospace;
 	  font-size: 13px;
+	  line-height: 1.5em;
+	  font-weight: 500;
+}
+
+code	{
+	font-family:Menlo, Monaco, Courier;
+	white-space:pre-wrap;
+	font-size:15px;
+	overflow:auto;
+	border-radius: 3px;
+	  font-family: 'Source Code Pro',Menlo,monospace;
+	  font-size: 15px;
 	  line-height: 1.5em;
 	  font-weight: 500;
 }
