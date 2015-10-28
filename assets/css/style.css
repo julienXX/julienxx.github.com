@@ -71,7 +71,7 @@ h2 {
 
 .profile #wrapper {
 	padding: 100px 40px 0px;
-	max-width: 600px;
+	max-width: 730px;
 	margin: 0 auto;
 }
 
@@ -139,7 +139,7 @@ nav.main-nav a.cta {
 }
 
 #wrapper {
-  max-width: 600px;
+  max-width: 730px;
   margin: 0 auto;
   padding: 60px 40px 100px 40px;
 }
@@ -298,17 +298,13 @@ pre	{
 	white-space:pre-wrap;
 	/*border: 1px solid #ddd;*/
 	padding:20px;
-	background-color:#fdfdfd;
 	/*font-size:14px;*/
 	overflow:auto;
 	border-radius: 3px;
-	background: #272b2d;
 	  font-family: 'Source Code Pro',Menlo,monospace;
 	  font-size: 13px;
 	  line-height: 1.5em;
 	  font-weight: 500;
-	color: #d0d4d7;
-
 }
 
 table {
