@@ -212,3 +212,5 @@ And it works! We successfully enqueued and performed a job in Resque from Rust.
 ## What's missing?
 
 Our implementation still needs to be Resque web compatible (display workers, failed jobs...). It also needs to be deployed alongside our Ruby workers but that's for another article :)
+
+*Thanks a lot to the reviewers: Flavien, Marc, Steve & Yohan.*
