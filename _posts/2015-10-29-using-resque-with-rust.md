@@ -48,8 +48,11 @@ In your Cargo.toml add:
 
 ```toml
 [dependencies]
-redis = "*"
-rustc-serialize = "*"
+rustc-serialize = "0.3.16"
+
+[dependencies.redis]
+git = "https://github.com/mitsuhiko/redis-rs.git"
+tag = "0.5.1"
 ```
 
 Next let's use those crates. In our main.rs:
