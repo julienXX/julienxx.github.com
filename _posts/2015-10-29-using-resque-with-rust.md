@@ -11,7 +11,7 @@ description: "Enqueing and performing Resque jobs with the Rust programming lang
 
 [Resque](https://github.com/blog/542-introducing-resque) is a popular solution in the Ruby world to process background jobs. The great thing with it is the fact it uses Redis as a backend, making it easy to share jobs with workers written in other languages.
 
-In this article we'll see how we can write a fully functionnal Resque worker in Rust. This will allow us to either use Resque entirely with Rust, enqueue a job in Ruby and perform it with Rust or vice versa.
+In this article we'll see how we can write a fully functional Resque worker in Rust. This will allow us to either use Resque entirely with Rust, enqueue a job in Ruby and perform it with Rust or vice versa.
 
 The full code for the following examples can be found [here](https://github.com/julienXX/rust-resque-example).
 
