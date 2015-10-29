@@ -1,16 +1,19 @@
 ---
 title:  "Using Resque with Rust"
-date:   2015-10-28 14:40:00
+date:   2015-10-29 14:30:00
 description: "Enqueing and performing Resque jobs with the Rust programming language."
 ---
 
-*Disclaimer: I'm not a Rust expert by any means so please tell me if there is something I can improve in the examples below. I'm not going to explain how Rust works, if you haven't yet you should have a look at [the Rust Book](https://doc.rust-lang.org/book/)*
+![Resque workers of the World, unite!](http://i.imgbox.com/D8eBMjnd.jpg)
 
-The full code for the following examples can be found [here](https://github.com/julienXX/rust-resque-example).
+
+*Disclaimer: I'm not a Rust expert by any means so please tell me if there is something I can improve in the examples below. I'm not going to explain how Rust works. If you're not familiar with it I highly encourage you to read [the Rust Book](https://doc.rust-lang.org/book/)*
 
 [Resque](https://github.com/blog/542-introducing-resque) is a popular solution in the Ruby world to process background jobs. The great thing with it is the fact it uses Redis as a backend, making it easy to share jobs with workers written in other languages.
 
 In this article we'll see how we can write a fully functionnal Resque worker in Rust. This will allow us to either use Resque entirely with Rust, enqueue a job in Ruby and perform it with Rust or vice versa.
+
+The full code for the following examples can be found [here](https://github.com/julienXX/rust-resque-example).
 
 ## How does Resque works?
 
@@ -156,9 +159,10 @@ In order to perform our job, we need to decode the JSON String retrieved from th
 
 ```rust
 fn perform(json_job: String) -> redis::RedisResult<()> {
+    println!("Found job: {:?}", json_job);
+
     // Decode JSON
     let job: Job = json::decode(&*json_job).unwrap();
-    println!("Found job: {:?}", job.args.first());
 
     // Send our email with something like:
     // send_email(job.args.first());
@@ -207,4 +211,4 @@ And it works! We successfully enqueued and performed a job in Resque from Rust.
 
 ## What's missing?
 
-Our implementation still needs to be Resque web compatible (show workers...) and to handle failed jobs the Resque way. It also needs to be deployed alongside our Ruby workers but that's for another article :)
+Our implementation still needs to be Resque web compatible (display workers, failed jobs...). It also needs to be deployed alongside our Ruby workers but that's for another article :)
