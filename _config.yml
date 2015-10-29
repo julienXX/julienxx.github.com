@@ -4,11 +4,8 @@ meta_description: "Julien Blanchard"
 
 aboutPage: true
 
-markdown: kramdown
-
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+markdown: redcarpet
+highlighter: pygments
 
 paginate: 20
 baseurl: /
