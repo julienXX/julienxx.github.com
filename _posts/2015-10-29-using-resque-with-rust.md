@@ -63,7 +63,7 @@ extern crate rustc_serialize;
 
 use redis::Commands;
 use rustc_serialize::Encodable;
-use rustc_serialize::json::{self};
+use rustc_serialize::json;
 ```
 
 For our example we need to define a Job struct with with two fields: a class that will be a String and args that will be a vector of Strings.
