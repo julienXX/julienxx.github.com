@@ -15,7 +15,7 @@ In this article we'll see how we can write a fully functional Resque worker in R
 
 The full code for the following examples can be found [here](https://github.com/julienXX/rust-resque-example).
 
-## How does Resque work?  
+## How does Resque work?
 
 Resque jobs are enqueued in a Redis list using the `RPUSH` command.
 A Resque job is represented internally with a JSON string containing two keys, one for the job class name and one for its arguments (or payload in Resque terms).
@@ -29,7 +29,7 @@ A Resque job is represented internally with a JSON string containing two keys, o
 
 Available queues are defined in a `resque:queues` `Redis SET` whose entries are the queue name like `some_queue_name`.
 
-Enqueueing a job is done by issueing a `RPUSH` command with a payload to some queue. 
+Enqueueing a job is done by issueing a `RPUSH` command with a payload to some queue.
 
 Knowing that let's enqueue our first job from Rust.
 
