@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 gem 'github-pages'
-gem 'rouge', '= 1.3'
+gem 'rouge'
+gem 'jekyll-paginate'
