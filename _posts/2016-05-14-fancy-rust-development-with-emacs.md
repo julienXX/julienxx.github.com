@@ -4,7 +4,7 @@ date:   2016-05-14 15:10:00
 description: "A small tutorial on the crates and packages you need."
 ---
 
-[Rustup](https://www.rustup.rs) beta was released this week. As a member of the Chrurch of Emacs I needed to update my config a bit. This inspired me to write this post on how to setup your Emacs as a great Rust IDE.
+[Rustup](https://www.rustup.rs) beta was released this week. As a member of the Church of Emacs I needed to update my config a bit. This inspired me to write this post on how to setup your Emacs as a great Rust IDE.
 
 
 # Installing Rust
