@@ -106,7 +106,7 @@ Rust source code is needed for auto-completion so clone it somewhere:
 λ git clone git@github.com:rust-lang/rust.git
 {% endhighlight %}
 
-To use racer within emacs, do a `M-x package-install emacs-racer` and set it up like:
+To use racer within emacs, do a `M-x package-install racer` and set it up like:
 
 {% highlight emacs-lisp %}
 (setq racer-cmd "~/.cargo/bin/racer") ;; Rustup binaries PATH
@@ -117,7 +117,7 @@ To use racer within emacs, do a `M-x package-install emacs-racer` and set it up 
 (add-hook 'racer-mode-hook #'company-mode)
 {% endhighlight %}
 
-Note that `emacs-racer` relies on [company-mode](https://company-mode.github.io) so install it if you haven't.
+Note that `racer` relies on [company-mode](https://company-mode.github.io) so install it if you haven't.
 
 ![racer](/assets/images/racer.gif)
 
