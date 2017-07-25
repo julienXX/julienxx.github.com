@@ -224,7 +224,7 @@ Another concurrency primitive available in F# is mailboxes. F# can natively hand
 
 Basically actors are lightweight constructs that have a queue and can send messages to other actors and process incoming messages sent to them from the queue.
 
-This great article by [Rachel Reese](https://twitter.com/rachelreese) explores the subject if you want to dig deeper.
+This great [article](http://www.codemag.com/article/1707051) by [Rachel Reese](https://twitter.com/rachelreese) explores the subject if you want to dig deeper.
 
 
 # Some additional resources
