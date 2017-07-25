@@ -9,7 +9,6 @@ highlighter: rouge
 gems: [jekyll-paginate]
 
 paginate: 20
-baseurl: /
 domain_name: 'http://julienblanchard.com'
 google_analytics: 'UA-9345972-3'
 disqus_shortname: 'julienblanchard'
@@ -21,16 +20,16 @@ authorTwitter:  'julienXX'
 
 permalink:       /:year/:title/
 
-defaults:
-    -
-        scope:
-            path: "" # empty string for all files
-            type: pages
-        values:
-            layout: default
-    -
-        scope:
-            path: "" # empty string for all files
-            type: posts
-        values:
-            layout: post
+# defaults:
+#     -
+#         scope:
+#             path: "" # empty string for all files
+#             type: pages
+#         values:
+#             layout: default
+#     -
+#         scope:
+#             path: "" # empty string for all files
+#             type: posts
+#         values:
+#             layout: post
