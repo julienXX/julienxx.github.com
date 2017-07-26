@@ -2,6 +2,7 @@
 title:  "Rust on AWS Lambda"
 date:   2015-11-17 15:10:00
 description: "Creating a micro-service with Rust code on AWS Lambda"
+tags: ["rust", "aws", "lambda"]
 ---
 
 [AWS Lambda](http://aws.amazon.com/lambda/) is an amazing event-based compute service capable of running a function without worrying about the underlying infrastructure. Currently it supports Node.js, Java (and JVM based langs) & Python. It's a brilliant tool for micro-services.

@@ -1,35 +1,69 @@
-name: Julien Blanchard
-description: Software Plumber
-meta_description: "Julien Blanchard"
+name:               "Julien Blanchard"
 
-aboutPage: true
+author:
+  twitter:          julienXX
+  github:           julienXX
+  linkedin:         blanchardjulien
+  email:            me@julienblanchard.com
 
-highlighter: rouge
+copyright:
+  year:             2017
+  name:             Julien Blanchard
 
-gems: [jekyll-paginate]
+# Google-analytics
+google-analytics:
+  id:               "UA-9345972-3"
 
-paginate: 20
-domain_name: 'http://julienblanchard.com'
-google_analytics: 'UA-9345972-3'
-disqus_shortname: 'julienblanchard'
+# URL
+url:                "http://julienblanchard.com"
+baseurl:            "" # the subpath of your site, e.g. /blog
 
-# Details for the RSS feed generator
-url:            'http://julienblanchard.com'
-author:         'Julien Blanchard'
-authorTwitter:  'julienXX'
 
-permalink:       /:year/:title/
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:           Europe/Paris
+permalink:          /:year/:title/
 
-# defaults:
-#     -
-#         scope:
-#             path: "" # empty string for all files
-#             type: pages
-#         values:
-#             layout: default
-#     -
-#         scope:
-#             path: "" # empty string for all files
-#             type: posts
-#         values:
-#             layout: post
+# Pagination
+paginate:           3
+paginate_path:      /page:num/
+
+# Markdown
+markdown:           kramdown
+kramdown:
+  input:            GFM
+
+# Navigation
+nav:
+  - name:           "About"
+    url:            "/about"
+  - name:           "Archive"
+    url:            "/archive"
+  - name:           "Tags"
+    url:            "/tags"
+  - name:           "Github"
+    url:            "https://github.com/julienXX"
+
+# Sass
+sass:
+  sass_dir:         _sass
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+plugins:
+  - jekyll-paginate
+
+exclude:            [vendor]

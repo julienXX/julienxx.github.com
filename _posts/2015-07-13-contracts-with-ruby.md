@@ -2,6 +2,7 @@
 title:  "How I upgraded my Ruby with Contracts"
 date:   2015-07-13 17:18:00
 description: "and made my code safer"
+tags: ["ruby", "contracts"]
 ---
 
 Toying with many languages made me discover new approaches and techniques. For example, Haskell taught me about [Types](http://learnyouahaskell.com/making-our-own-types-and-typeclasses) and Erlang/Elixir enlightened me on [Pattern-matching](http://learnyousomeerlang.com/syntax-in-functions).

@@ -2,10 +2,10 @@
 title:  "Using Resque with Rust"
 date:   2015-10-29 14:30:00
 description: "Enqueing and performing Resque jobs with the Rust programming language."
+tags: ["rust", "ruby", "background jobs", "workers"]
 ---
 
-![Resque workers of the World, unite!](http://i.imgbox.com/D8eBMjnd.jpg)
-
+![Resque workers of the World, unite!](/assets/images/workers.jpg)
 
 *Disclaimer: I'm not a Rust expert by any means so please tell me if there is something I can improve in the examples below. I'm not going to explain how Rust works. If you're not familiar with it I highly encourage you to read [the Rust Book](https://doc.rust-lang.org/book/)*
 

@@ -2,6 +2,7 @@
 title:  "Getting started with F# and .NET Core"
 date:   2017-07-24 21:10:00
 description: "My adventures in the modern .NET world"
+tags: ["F#", ".NET Core", "fsharp", "dotnet core"]
 ---
 
 **TLDR**: F# and .NET Core are really cool, you should give them a try.
